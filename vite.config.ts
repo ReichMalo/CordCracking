@@ -5,4 +5,7 @@ export default defineConfig({
   plugins: [
     tailwindcss(),
   ],
+  preview: {
+    allowedHosts: ['cordcracking.onrender.com'],
+  },
 })
