@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./src/style.css" />
+    <title>CordCracking | Éditeur de blocs</title>
+  </head>
+  <body class="bg-page text-white">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">ÉDITEUR DE STRUCTURES</p>
+        <h1>CordCracking</h1>
+      </div>
+      <div class="topbar-stat"><span id="blockCount">0 bloc</span><span class="status-dot"></span></div>
+    </header>
+    <main class="workspace">
+      <aside class="panel controls-panel">
+        <div class="panel-heading"><span>Paramètres</span><span class="panel-index">01</span></div>
+        <label for="gridWidth">Largeur</label>
+        <input id="gridWidth" type="number" min="4" max="24" value="12" />
+        <label for="gridDepth">Profondeur</label>
+        <input id="gridDepth" type="number" min="4" max="24" value="12" />
+        <label for="maxHeight">Hauteur maximale</label>
+        <input id="maxHeight" type="number" min="1" max="16" value="8" />
+        <button class="primary-button" id="applySettings" type="button">Appliquer les dimensions</button>
+
+        <div class="panel-heading value-heading"><span>Valeur du bloc</span><span class="panel-index">02</span></div>
+        <div class="value-picker" role="group" aria-label="Valeur du bloc">
+          <button class="value-button is-selected" data-value="0" type="button"><span class="swatch swatch-0"></span>0</button>
+          <button class="value-button" data-value="1" type="button"><span class="swatch swatch-1"></span>1</button>
+          <button class="value-button" data-value="2" type="button"><span class="swatch swatch-2"></span>2</button>
+          <button class="value-button" data-value="3" type="button"><span class="swatch swatch-3"></span>3</button>
+        </div>
+        <div class="hint"><span class="hint-key">CLIC</span> poser un bloc<br /><span class="hint-key">CLIC DROIT</span> retirer un bloc<br /><span class="hint-key">GLISSER</span> orienter la caméra</div>
+        <div class="panel-heading value-heading"><span>Analyse</span><span class="panel-index">03</span></div>
+        <button class="primary-button" id="generateFormation" type="button">Générer la formation</button>
+        <button class="secondary-button" id="searchFormation" type="button">Rechercher les positions</button>
+        <div class="search-progress" aria-live="polite">
+          <progress id="searchProgress" value="0" max="100" hidden></progress>
+          <span id="searchProgressLabel"></span>
+        </div>
+      </aside>
+      <section class="canvas-shell">
+        <div class="canvas-label">PLAN DE CONSTRUCTION <span>·</span> VUE 3D</div>
+        <canvas id="gameCanvas"></canvas>
+        <p class="status-line" id="statusText">Cliquez sur le sol ou une face de bloc pour construire.</p>
+        <pre class="formation-output" id="formationOutput">// La formation apparaîtra ici.</pre>
+      </section>
+      <aside class="panel search-panel">
+        <div class="panel-heading"><span>Recherche</span><span class="panel-index">04</span></div>
+        <p class="search-description">Définissez les coordonnées explorées par TextureFinder.</p>
+        <div class="range-heading"><span>AXE X</span><span>-X → +X</span></div>
+        <div class="range-fields">
+          <label for="xMin">Min</label><label for="xMax">Max</label>
+          <input id="xMin" type="number" value="-10" />
+          <input id="xMax" type="number" value="10" />
+        </div>
+        <div class="range-heading"><span>AXE Y</span><span>-Y → +Y</span></div>
+        <div class="range-fields">
+          <label for="yMin">Min</label><label for="yMax">Max</label>
+          <input id="yMin" type="number" value="0" />
+          <input id="yMax" type="number" value="10" />
+        </div>
+        <div class="range-heading"><span>AXE Z</span><span>-Z → +Z</span></div>
+        <div class="range-fields">
+          <label for="zMin">Min</label><label for="zMax">Max</label>
+          <input id="zMin" type="number" value="-10" />
+          <input id="zMax" type="number" value="10" />
+        </div>
+        <label class="worker-label" for="workerCount">Workers utilisés</label>
+        <input class="worker-input" id="workerCount" type="number" min="1" max="32" value="8" />
+        <p class="provider-note">Mode actif : VanillaTextures</p>
+        <p class="search-note">La recherche inclut les deux bornes. Les grandes plages peuvent demander plus de temps.</p>
+      </aside>
+    </main>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
