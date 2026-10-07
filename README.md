@@ -4,7 +4,7 @@ CordCracking est un outil web permettant de créer des formations de blocs Minec
 d’attribuer une valeur de rotation à chaque bloc et 
 de rechercher automatiquement les coordonnées correspondant à cette formation.
 
-L’application est utilisable en local ou disponible directement ici :
+L’application est utilisable en local (npm install) ou disponible directement ici :
 
 https://cordcracking.onrender.com
 
